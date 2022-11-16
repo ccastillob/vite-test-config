@@ -2,17 +2,21 @@
   "name": "vite-project-test",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts,.jsx,.tsx",
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
@@ -20,7 +24,12 @@
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.26.0",
     "eslint-plugin-react": "^7.31.10",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"
+  },
+  "lint-staged": {
+    "*.(js|ts)": "npm run lint:fix"
   }
 }
